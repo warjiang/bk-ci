@@ -16,6 +16,7 @@ spec:
       labels:
         app.kubernetes.io/component: init-sql
     spec:
+      {{- include "bkci.imagePullSecrets" . | nindent 6 }}
       {{- if .Values.mysql.enabled }}
       initContainers:
         - name: wait-for-mysql

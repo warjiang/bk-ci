@@ -32,6 +32,7 @@ spec:
         app.kubernetes.io/component: microservice
         app.kubernetes.io/name: metrics
     spec:
+      {{- include "bkci.imagePullSecrets" . | nindent 6 }}
       serviceAccountName: {{ .Values.rbac.serviceAccount }}
       {{- if .Values.metrics.hostAliases }}
       hostAliases: {{- include "common.tplvalues.render" (dict "value" .Values.metrics.hostAliases "context" $) | nindent 8 }}

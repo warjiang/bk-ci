@@ -3,7 +3,7 @@ global:
   imageRegistry: "fronted-cn-beijing.cr.volces.com/container"
   imagePullSecrets:
     - "fronted-cn-beijing"
-  storageClass: ""
+  storageClass: "local-path"
 
 # RBAC配置
 rbac:
@@ -231,6 +231,7 @@ influxdb:
       token: GnnsHwEcQ07sqpidcX2s
   persistence:
     size: 10Gi
+    storageClass: "local-path"
   influxdb:
     readinessProbe:
       enabled: false

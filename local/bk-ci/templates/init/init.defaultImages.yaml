@@ -16,6 +16,7 @@ spec:
       labels: {{- include "bkci.labels.standard" . | nindent 8 }}
         app.kubernetes.io/component: init-default-image
     spec:
+      {{- include "bkci.imagePullSecrets" . | nindent 6 }}
       containers:
         - name: init-default-image
           image: {{ include "bkci-backend.image" . }}

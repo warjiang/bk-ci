@@ -345,3 +345,10 @@ Return the bkci turbo image name
 {{- define "bkci-turbo.image" -}}
 {{ include "common.images.image" (dict "imageRoot" .Values.turbo.image "global" .Values.global) }}
 {{- end -}}
+
+{{/*
+Return the bkci turbo image name
+*/}}
+{{- define "bkci.imagePullSecrets" -}}
+{{- include "common.images.pullSecrets" (dict "images"  (list ) "global" .Values.global) -}}
+{{- end -}}

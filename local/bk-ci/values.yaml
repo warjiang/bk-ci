@@ -377,6 +377,8 @@ kubernetes-manager:
       logPath: /data/devops/logs
     docker:
       enable: true
+      image:
+        registry: fronted-cn-beijing.cr.volces.com/container
   dockerInit:
     # 是否使用当前chart的 dockerinit.sh
     useDockerInit: true
