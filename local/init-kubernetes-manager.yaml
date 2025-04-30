@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kubernetes-manager-init-sql
+  namespace: bk-ck
+  labels:
+    app.kubernetes.io/component: init-sql
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/component: init-sql
+    spec:
+
+      imagePullSecrets:
+        - name: fronted-cn-beijing
+      containers:
+        - name: init-sql
+          image: fronted-cn-beijing.cr.volces.com/container/bkci/bkci-kubernetes-manager:0.0.32
+          imagePullPolicy: IfNotPresent
+          workingDir: /data/workspace/support-files/sql
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              ls -al
+              echo "init database"
+              for SQL in *.sql; do
+                echo "import $SQL"
+                mysql -uroot -pblueking -hbk-ci-mysql -P3306< $SQL;
+              done;
+      restartPolicy: OnFailure
