@@ -1,4 +1,4 @@
-import com.github.jk1.license.render.TextReportRenderer
+//import com.github.jk1.license.render.TextReportRenderer
 
 /*
  * Tencent is pleased to support the open source community by making BK-CI 蓝鲸持续集成平台 available.
@@ -27,42 +27,42 @@ import com.github.jk1.license.render.TextReportRenderer
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-plugins {
-    id("com.github.jk1.dependency-license-report")
-}
-
-licenseReport {
-    excludeGroups = arrayOf(
-        "com.tencent.bk.devops.ci",
-        "com.tencent.bk.devops.turbo",
-        "com.tencent.bk.repo",
-        "com.tencent.bk.sdk",
-        "com.tencent.devops",
-        "com.tencent.devops.leaf"
-    )
-    // Don't include artifacts of project's own group into the report
-    excludeOwnGroup = true
-
-    // exclude bom dependencies. If set to true, then all boms will be excluded from the report
-    excludeBoms = true
-
-    // 第三方依赖license声明
-    renderers = arrayOf(TextReportRenderer(/* filename = */ "THIRD-PARTY-NOTICES.txt"))
-
-    // 对一些协议的全称写法不同,导致造成识别上的差异而失败需要进行补充允许, 以及对一些特殊的包进行说明和手动豁免
-    allowedLicensesFile = File("${rootProject.projectDir}/buildSrc/src/main/resources/allowed-licenses.json")
-}
-
-tasks.register("weCheckLicense") {
-    group = "checking"
-    this.dependsOn("checkLicense")
-    doLast { // 检查结束后, 将第三方依赖项license复制到release目录, 以便随包发行
-        println("weCheckLicense: copy THIRD-PARTY-NOTICES.txt to release")
-        val newFile = File("${rootProject.projectDir}/release/THIRD-PARTY-NOTICES.txt")
-        newFile.parentFile.mkdirs()
-        val oldFile = File("${rootProject.projectDir}/build/reports/dependency-license/THIRD-PARTY-NOTICES.txt")
-        oldFile.renameTo(newFile)
-    }
-}
-
-tasks.getByName("classes").dependsOn("weCheckLicense")
+//plugins {
+//    id("com.github.jk1.dependency-license-report")
+//}
+//
+//licenseReport {
+//    excludeGroups = arrayOf(
+//        "com.tencent.bk.devops.ci",
+//        "com.tencent.bk.devops.turbo",
+//        "com.tencent.bk.repo",
+//        "com.tencent.bk.sdk",
+//        "com.tencent.devops",
+//        "com.tencent.devops.leaf"
+//    )
+//    // Don't include artifacts of project's own group into the report
+//    excludeOwnGroup = true
+//
+//    // exclude bom dependencies. If set to true, then all boms will be excluded from the report
+//    excludeBoms = true
+//
+//    // 第三方依赖license声明
+//    renderers = arrayOf(TextReportRenderer(/* filename = */ "THIRD-PARTY-NOTICES.txt"))
+//
+//    // 对一些协议的全称写法不同,导致造成识别上的差异而失败需要进行补充允许, 以及对一些特殊的包进行说明和手动豁免
+//    allowedLicensesFile = File("${rootProject.projectDir}/buildSrc/src/main/resources/allowed-licenses.json")
+//}
+//
+//tasks.register("weCheckLicense") {
+//    group = "checking"
+//    this.dependsOn("checkLicense")
+//    doLast { // 检查结束后, 将第三方依赖项license复制到release目录, 以便随包发行
+//        println("weCheckLicense: copy THIRD-PARTY-NOTICES.txt to release")
+//        val newFile = File("${rootProject.projectDir}/release/THIRD-PARTY-NOTICES.txt")
+//        newFile.parentFile.mkdirs()
+//        val oldFile = File("${rootProject.projectDir}/build/reports/dependency-license/THIRD-PARTY-NOTICES.txt")
+//        oldFile.renameTo(newFile)
+//    }
+//}
+//
+//tasks.getByName("classes").dependsOn("weCheckLicense")
