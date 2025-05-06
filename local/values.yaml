@@ -3,7 +3,8 @@ global:
   imageRegistry: "fronted-cn-beijing.cr.volces.com/container"
   imagePullSecrets:
     - "fronted-cn-beijing"
-  storageClass: "local-path"
+#  storageClass: "local-path"
+  storageClass: "standard"
 
 # RBAC配置
 rbac:
@@ -231,7 +232,9 @@ influxdb:
       token: GnnsHwEcQ07sqpidcX2s
   persistence:
     size: 10Gi
-    storageClass: "local-path"
+    # storageClass: "local-path"
+    storageClass: "standard"
+
   influxdb:
     readinessProbe:
       enabled: false
@@ -486,8 +489,8 @@ auth:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 2
+      memory: 4Gi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -527,8 +530,8 @@ artifactory:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 2
+      memory: 4Gi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -568,8 +571,8 @@ dispatch:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 2
+      memory: 4Gi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -609,8 +612,8 @@ environment:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 2
+      memory: 4Gi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -690,9 +693,9 @@ metrics:
     requests:
       cpu: 100m
       memory: 1000Mi
-    limits:
-      cpu: 500m
-      memory: 1500Mi
+#    limits:
+#      cpu: 4
+#      memory: 8000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -732,8 +735,8 @@ notify:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -776,8 +779,8 @@ openapi:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -817,8 +820,8 @@ process:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -858,8 +861,8 @@ project:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -899,8 +902,8 @@ quality:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -940,8 +943,8 @@ repository:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -981,8 +984,8 @@ store:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -1022,8 +1025,8 @@ ticket:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -1063,8 +1066,8 @@ websocket:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
-      memory: 1500Mi
+      cpu: 1000m
+      memory: 3000Mi
   jvm:
     heapPct: "70.0"
     initSecs: 50
@@ -1109,7 +1112,7 @@ turbo:
       cpu: 100m
       memory: 1000Mi
     limits:
-      cpu: 500m
+      cpu: 1000m
       memory: 3000Mi
   containerSecurityContext:
     enabled: false
@@ -1155,8 +1158,8 @@ gateway:
       cpu: 100m
       memory: 500Mi
     limits:
-      cpu: 500m
-      memory: 800Mi
+      cpu: 1000m
+      memory: 1600Mi
   hostAliases: []
   containerSecurityContext:
     enabled: false

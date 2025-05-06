@@ -34,7 +34,7 @@ dependencies:
   version: 10.30.6
 - condition: kubernetes-manager.enabled
   name: kubernetes-manager
-  repository: file://./local_chart/kubernetes-management
+  repository: file://../../helm-charts/core/ci/local_chart/kubernetes-management
   version: 0.0.45
 description: A Helm chart for BlueKing CI
 home: https://github.com/Tencent/bk-ci
